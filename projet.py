@@ -10,11 +10,57 @@ import sklearn.metrics as m
 import sklearn.linear_model as lm
 import sklearn.neural_network as nn
 import numpy as np
+
+
+
+
+
+
+
+
+data = pd.read_csv("/AI-Data.csv")
+
+# Fonction pour générer les graphiques
+def generate_graph(x_col, hue=None, order=None, hue_order=None, title="Graph"):
+    print("Loading Graph....\n")
+    t.sleep(1)
+    print(f"\t{title}")
+    plt.figure(figsize=(10, 6))
+    sb.countplot(x=x_col, hue=hue, data=data, order=order, hue_order=hue_order)
+    plt.show()
+
+ch = 0
+while ch != 10:
+    print("1.Marks Class Count Graph\t2.Marks Class Semester-wise Graph\n3.Marks Class Gender-wise Graph\t4.Marks Class Nationality-wise Graph\n5.Marks Class Grade-wise Graph\t6.Marks Class Section-wise Graph\n7.Marks Class Topic-wise Graph\t8.Marks Class Stage-wise Graph\n9.Marks Class Absent Days-wise\t10.No Graph\n")
+    ch = int(input("Enter Choice: "))
+    if ch == 1:
+        generate_graph('Class', order=['L', 'M', 'H'], title="Marks Class Count Graph")
+    elif ch == 2:
+        generate_graph('Semester', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Semester-wise Graph")
+    elif ch == 3:
+        generate_graph('gender', hue='Class', order=['M', 'F'], hue_order=['L', 'M', 'H'], title="Marks Class Gender-wise Graph")
+    elif ch == 4:
+        generate_graph('NationalITy', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Nationality-wise Graph")
+    elif ch == 5:
+        generate_graph('GradeID', hue='Class', order=['G-02', 'G-04', 'G-05', 'G-06', 'G-07', 'G-08', 'G-09', 'G-10', 'G-11', 'G-12'], hue_order=['L', 'M', 'H'], title="Marks Class Grade-wise Graph")
+    elif ch == 6:
+        generate_graph('SectionID', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Section-wise Graph")
+    elif ch == 7:
+        generate_graph('Topic', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Topic-wise Graph")
+    elif ch == 8:
+        generate_graph('StageID', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Stage-wise Graph")
+    elif ch == 9:
+        generate_graph('StudentAbsenceDays', hue='Class', hue_order=['L', 'M', 'H'], title="Marks Class Absent Days-wise Graph")
+if ch == 10:
+    print("Exiting..\n")
+    t.sleep(1)
 #import random as rnd
 import warnings as w
 w.filterwarnings('ignore')
 data = pd.read_csv("/AI-Data.csv")
 ch = 0
+
+####
 while(ch != 10):
     print("1.Marks Class Count Graph\t2.Marks Class Semester-wise Graph\n3.Marks Class Gender-wise Graph\t4.Marks Class Nationality-wise Graph\n5.Marks Class Grade-wise Graph\t6.Marks Class Section-wise Graph\n7.Marks Class Topic-wise Graph\t8.Marks Class Stage-wise Graph\n9.Marks Class Absent Days-wise\t10.No Graph\n")
     ch = int(input("Enter Choice: "))
